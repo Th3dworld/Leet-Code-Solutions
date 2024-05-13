@@ -5,13 +5,10 @@ class Solution:
             return False
         #create dictionary to store values
         letterFrequency = dict()
-        #initialize values in dictionary with 0 
-        for l in s:
-            letterFrequency[l] = 0
         #populate dictionary with letters in s as keys
         #and increment value by 1 
         for l in s:
-            letterFrequency[l] += 1
+            letterFrequency[l] = 1 + letterFrequency.get(l,0)
         #check if the the letters in t are in the populated dictionary
         #decrement by 1
         for l in t:
@@ -19,7 +16,5 @@ class Solution:
             #If the letter frequency is less than 0 then return False
             if letterFrequency[l] < 0:
                 return False
-
         #Everything has passed the tests
         return True
-        
