@@ -1,18 +1,12 @@
 class Solution {
 public:
     bool containsDuplicate(vector<int>& nums) {
-        unordered_map<int,int> valuesPresent {};
-
-        //If value is present return true
-        for(int x: nums)
-        {
-            if(valuesPresent.contains(x))
-            {
+        set<int>trackr;
+        for(int i: nums){
+            if(trackr.contains(i))
                 return true;
-            }
-            else
-                valuesPresent[x] = 1;
+            trackr.insert(i);
         }
-        return false;        
+        return false;
     }
 };
