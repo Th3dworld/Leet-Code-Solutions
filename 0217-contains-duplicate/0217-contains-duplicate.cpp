@@ -1,12 +1,16 @@
 class Solution {
 public:
     bool containsDuplicate(vector<int>& nums) {
-        set<int>trackr;
-        for(int i: nums){
-            if(trackr.contains(i))
+        //create set to store data
+        set<int> hashSet;
+        //iterate through array storing data in sets
+        for(int num: nums){
+            if(hashSet.contains(num)){
                 return true;
-            trackr.insert(i);
+            }
+            hashSet.insert(num);
         }
         return false;
+        
     }
 };
