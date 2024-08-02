@@ -1,16 +1,17 @@
 class Solution {
 public:
     bool containsDuplicate(vector<int>& nums) {
-        //create set to store data
-        set<int> hashSet;
-        //iterate through array storing data in sets
+        //Create set to add values to 
+        unordered_set<int>hash_set;
+
+        //iterate through array adding values to dict
         for(int num: nums){
-            if(hashSet.contains(num)){
+            if(hash_set.contains(num)){
                 return true;
             }
-            hashSet.insert(num);
+            hash_set.insert(num);
         }
+
         return false;
-        
     }
 };
