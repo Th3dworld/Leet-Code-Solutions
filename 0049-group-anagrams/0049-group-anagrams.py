@@ -1,18 +1,13 @@
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        result = defaultdict(list)
+        #create dictionary to store words as list
+        res = collections.defaultdict(list)
         
-        #isolate word from strs list
-        for s in strs:
-            count = [0] * 26
-            
-            #loop through the word to get chars present 
-            for char in s:
-                #get ascii values
-                count[ord(char) - ord("a")] += 1
-                
-            result[tuple(count)].append(s)
-            
-        return result.values()
-                
-                
+        #create array to store occurrence of letters
+        for string in strs:
+            count = [0] * 26            
+            for char in string:
+                count[ord(char) - ord('a')] += 1
+            res[tuple(count)].append(string)
+        return res.values()
+        
