@@ -3,10 +3,11 @@ class Solution:
         hashMap = defaultdict(list)
         
         for string in strs:
-            key = ""
-            for char in sorted(string):
-                key += str(ord(char))
-            hashMap[key].append(string)
-        
+            count = [0] * 26
+            
+            for char in string:
+                count[ord(char) - ord("a")] += 1
+            hashMap[tuple(count)].append(string)
+            
         return hashMap.values()
         
