@@ -4,14 +4,11 @@ class Solution:
         longest = 0
         
         for n in hashSet:
-            number = n
             if n-1 not in hashSet:
                 length = 1
-                while number + 1 in hashSet:
+                while n + length in hashSet:
                     length += 1
-                    number += 1
-                longest = max(length, longest)
-        return longest
+                longest = max(longest, length)
                 
-        
-        
+        return longest
+                    
