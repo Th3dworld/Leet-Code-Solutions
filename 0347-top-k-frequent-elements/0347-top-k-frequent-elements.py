@@ -5,14 +5,14 @@ class Solution:
         
         for n in nums:
             count[n] = count.get(n,0) + 1
-            
-        for n,c in count.items():
-                freq[c].append(n)
-            
+
+        for n,f in count.items():
+            freq[f].append(n)
+        
         res = []
         
-        for i in range(len(nums),0,-1):
-            for n in freq[i]:
-                res.append(n)
+        for i in range(len(nums),-1,-1):
+            for num in freq[i]:
+                res.append(num)
                 if len(res) == k:
-                    return res;
+                    return res
