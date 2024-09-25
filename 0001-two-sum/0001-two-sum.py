@@ -7,4 +7,3 @@ class Solution:
             if diff in numToIndex:
                 return [i, numToIndex[diff]]
             numToIndex[n] = i
-            
