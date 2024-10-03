@@ -12,11 +12,10 @@ class Solution:
                 stack.append("(")
                 backtrack(openN + 1, closeN)
                 stack.pop()
-                
             if closeN < openN:
                 stack.append(")")
-                backtrack(openN, closeN+1)
+                backtrack(openN, closeN + 1)
                 stack.pop()
-        
+            
         backtrack(0,0)
         return res
