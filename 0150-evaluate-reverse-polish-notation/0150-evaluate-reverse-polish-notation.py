@@ -4,14 +4,14 @@ class Solution:
         for c in tokens:
             if c == "+":
                 stack.append(stack.pop() + stack.pop())
-            elif c == "-":
-                r,l = stack.pop(),stack.pop()
-                stack.append(l-r)
             elif c == "*":
                 stack.append(stack.pop() * stack.pop())
+            elif c == "-":
+                b,a = stack.pop(),stack.pop()
+                stack.append(a-b)
             elif c == "/":
-                r,l = stack.pop(),stack.pop()
-                stack.append(int(l/r))
+                b,a = stack.pop(),stack.pop()
+                stack.append(int(float(a)/b))
             else:
                 stack.append(int(c))
-        return stack.pop()
+        return stack[0]
