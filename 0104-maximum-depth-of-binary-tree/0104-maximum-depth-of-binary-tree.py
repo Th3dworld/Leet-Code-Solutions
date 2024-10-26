@@ -14,7 +14,6 @@ class Solution:
             
         level = 0
         
-        print(q)
         while q:
             
             for i in range(len(q)):
