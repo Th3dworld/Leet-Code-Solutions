@@ -12,8 +12,7 @@ class Solution:
             
             res = 1 if curr.val >= maxVal else 0
             maxVal = max(curr.val, maxVal)
-            res += dfs(curr.left, maxVal)
             res += dfs(curr.right, maxVal)
-            
+            res += dfs(curr.left, maxVal)
             return res
         return dfs(root, root.val)
