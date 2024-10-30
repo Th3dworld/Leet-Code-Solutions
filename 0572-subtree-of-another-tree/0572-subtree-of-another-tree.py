@@ -9,15 +9,15 @@ class Solution:
         if not s: return True
         if not r: return False
         
-        if self.isSameTree(r,s):
+        if self.sameTree(s,r):
             return True
         
         return self.isSubtree(r.right,s) or self.isSubtree(r.left,s)
-     
-    def isSameTree(self,r,s):
+    
+    def sameTree(self,r,s):
         if not r and not s:
             return True
-        if r and s and r.val == s.val:
-            return self.isSameTree(r.right,s.right) and self.isSameTree(r.left,s.left)
-        else:
+        if not r or not s or s.val != r.val:
             return False
+        else:
+            return self.sameTree(s.right,r.right) and self.sameTree(s.left,r.left)
