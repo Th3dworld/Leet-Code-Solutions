@@ -11,5 +11,5 @@ class Solution:
                 return True
             if not (left < node.val < right):
                 return False
-            return valid(node.right,node.val, right) and valid(node.left, left, node.val)
-        return valid(root, float(-inf), float(inf))
+            return valid(node.left, left, node.val) and valid(node.right, node.val, right)
+        return valid(root, float("-inf"), float("inf"))
