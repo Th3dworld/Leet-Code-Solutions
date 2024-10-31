@@ -1,16 +1,16 @@
 class Solution:
-    def combinationSum(self, c: List[int], target: int) -> List[List[int]]:
+    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         res = []
-        def sol(index, cum, target,ans):
-            if index >= len(c):
+        def backtrack(index, target, cum):
+            if index >= len(candidates):
                 if target == 0:
-                    ans.append(cum[:])
+                    res.append(cum[:])
                 return
             
-            if c[index] <= target:
-                cum.append(c[index])
-                sol(index,cum,target-c[index],ans)
+            if candidates[index] <= target:
+                cum.append(candidates[index])
+                backtrack(index, target - candidates[index], cum)
                 cum.pop()
-            sol(index+1,cum,target,ans)
-        sol(0,[],target,res)    
+            backtrack(index + 1, target, cum)
+        backtrack(0,target,[])
         return res
