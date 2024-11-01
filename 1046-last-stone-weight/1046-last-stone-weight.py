@@ -7,7 +7,6 @@ class Solution:
             one,two = heapq.heappop(self.maxHeap),heapq.heappop(self.maxHeap)
             if abs(one) - abs(two) != 0:
                 heapq.heappush(self.maxHeap, -(abs(one) - abs(two)))
-        if len(self.maxHeap) > 0:
-            return abs(self.maxHeap[0])
-        else:
-            return 0
+                
+        heapq.heappush(self.maxHeap, 0)
+        return abs(self.maxHeap[0])
