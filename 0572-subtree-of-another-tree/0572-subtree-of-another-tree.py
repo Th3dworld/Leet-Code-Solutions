@@ -10,17 +10,12 @@ class Solution:
             return True
         if not root:
             return False
-        
-        if self.isSameTree(root,sub):
+        if self.isSameTree(root, sub):
             return True
-        
-        return self.isSubtree(root.right, sub) or self.isSubtree(root.left, sub) 
-    
+        return self.isSubtree(root.right, sub) or self.isSubtree(root.left, sub)
     def isSameTree(self, root, sub):
         if not root and not sub:
             return True
-        elif not root or not sub or sub.val != root.val:
+        if not root or not sub or root.val != sub.val:
             return False
-        else:
-            return self.isSameTree(root.right, sub.right) and self.isSameTree(root.left, sub.left)
-        
+        return self.isSameTree(root.right, sub.right) and self.isSameTree(root.left, sub.left) 
