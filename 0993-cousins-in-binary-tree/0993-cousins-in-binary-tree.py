@@ -21,7 +21,6 @@ class Solution:
                     q.append(node.left)
                     hashMap[node.left.val] = node.val
             
-            print(hashMap)
             if x in hashMap and y in hashMap and hashMap[x] != hashMap[y]:
                     return True
                 
