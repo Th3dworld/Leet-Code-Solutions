@@ -20,9 +20,10 @@ class Solution:
             for i in range(len(q)):
                 node = q.popleft()
                 length -= 1
+                
                 if node and length == 0:
                     node.next = None
-                elif node and q:
+                else:
                     node.next = q[0]
                 
                 if node.left:
