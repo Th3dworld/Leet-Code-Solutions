@@ -6,26 +6,21 @@
 #         self.right = right
 class Solution:
     def minDiffInBST(self, root: Optional[TreeNode]) -> int:
-        self.prev = None
-        self.min_diff = float('inf')
+        stack = [root]
+        nums = []
+        minimum = float("inf")
         
-        # In-order traversal helper function
-        def in_order(node):
-            if not node:
-                return
+        while stack:
+            node = stack.pop()
+            nums.append(node.val)
             
-            # Traverse the left subtree
-            in_order(node.left)
+            if node.right:
+                stack.append(node.right)
+            if node.left:
+                stack.append(node.left)
             
-            # Update the minimum difference
-            if self.prev is not None:
-                self.min_diff = min(self.min_diff, node.val - self.prev)
-            self.prev = node.val
-            
-            # Traverse the right subtree
-            in_order(node.right)
+        for i in range(len(nums)-1):
+            for j in range(i+1, len(nums)):
+                minimum = min(minimum, abs(nums[i] - nums[j]))
         
-        # Start in-order traversal from root
-        in_order(root)
-        
-        return self.min_diff
+        return minimum
