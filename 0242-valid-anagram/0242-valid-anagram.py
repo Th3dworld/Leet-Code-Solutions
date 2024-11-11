@@ -1,8 +1,4 @@
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
-        if len(s) != len(t):
-            return False
-        mapS = Counter(s)
-        mapT = Counter(t)
-        return mapS == mapT
-        
+        countS, countT = Counter(t), Counter(s)
+        return countS == countT
