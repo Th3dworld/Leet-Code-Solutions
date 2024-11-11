@@ -6,13 +6,14 @@ class Solution:
             if i.isalnum():
                 string += i.lower()
         
-        l,r = 0, len(string) - 1
+        print(string)
+        
+        l,r = 0, len(string)-1
         
         while l < r:
-            if string[l] == string[r]:
-                l += 1
-                r -= 1
-            else:
+            if string[l] != string[r]:
                 return False
+            l += 1
+            r -= 1
         
         return True
