@@ -4,18 +4,24 @@ class Solution:
         col = collections.defaultdict(set)
         grid = collections.defaultdict(set)
         
-        for r in range(len(board)):
-            for c in range(len(board)):
-                if board[r][c] == ".":
+        for ROW in range(len(board)):
+            for COL in range(len(board)):
+                if board[ROW][COL] == ".":
                     continue
-                elif board[r][c] in row[r]:
-                    return False
-                elif board[r][c] in col[c]:
-                    return False
-                elif board[r][c] in grid[(r//3,c//3)]:
+                    
+                if board[ROW][COL] in row[ROW]:
                     return False
                 else:
-                    row[r].add(board[r][c])
-                    col[c].add(board[r][c])
-                    grid[(r//3,c//3)].add(board[r][c])
+                    row[ROW].add(board[ROW][COL])
+                    
+                if board[ROW][COL] in col[COL]:
+                    return False
+                else:
+                    col[COL].add(board[ROW][COL])
+                
+                if board[ROW][COL] in grid[(ROW//3, COL//3)]:
+                    return False
+                else:
+                    grid[(ROW//3, COL//3)].add(board[ROW][COL])
+        
         return True
