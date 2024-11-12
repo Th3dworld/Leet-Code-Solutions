@@ -13,7 +13,7 @@ class Solution:
                     return False
                 else:
                     row[ROW].add(board[ROW][COL])
-                    
+                
                 if board[ROW][COL] in col[COL]:
                     return False
                 else:
@@ -23,5 +23,7 @@ class Solution:
                     return False
                 else:
                     grid[(ROW//3, COL//3)].add(board[ROW][COL])
-        
+                
         return True
+                    
+                  
