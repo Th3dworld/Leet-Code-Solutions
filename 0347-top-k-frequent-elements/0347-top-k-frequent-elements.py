@@ -1,19 +1,16 @@
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        bucket = [[] for i in range(len(nums) + 1)]
         count = Counter(nums)
-        nums = []
+        
+        for val, cnt in count.items():
+            bucket[cnt].append(val)
+        
         res = []
         
-        for v,c in count.items():
-            nums.append([-c, v])
+        for i in range(len(nums),0,-1):
+            for j in bucket[i]:
+                res.append(j)
+                if len(res) == k:
+                    return res                    
         
-        heapq.heapify(nums)
-        
-        while k > 0:
-            res.append(heapq.heappop(nums)[1])
-            k -= 1
-        
-        return res
-        
-
-            
