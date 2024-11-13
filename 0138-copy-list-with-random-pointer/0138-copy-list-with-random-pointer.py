@@ -9,21 +9,24 @@ class Node:
 
 class Solution:
     def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
+        hashMap = {}
+        
         if not head:
-            return None
+            return head
         
-        HashMap = dict()
         curr = head
         while curr:
-            HashMap[curr] = Node(curr.val)
+            hashMap[curr] = Node(curr.val)
             curr = curr.next
         
         curr = head
         while curr:
-            if curr.next:
-                HashMap[curr].next = HashMap[curr.next]
             if curr.random:
-                HashMap[curr].random = HashMap[curr.random]
+                hashMap[curr].random = hashMap[curr.random]
+            if curr.next:
+                hashMap[curr].next = hashMap[curr.next]
             curr = curr.next
         
-        return HashMap[head]
+        print(head)
+        
+        return hashMap[head]
