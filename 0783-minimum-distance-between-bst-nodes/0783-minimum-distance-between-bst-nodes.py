@@ -6,20 +6,23 @@
 #         self.right = right
 class Solution:
     def minDiffInBST(self, root: Optional[TreeNode]) -> int:
-        def dfs(root, arr):
+        inorder = []
+        small = float("inf")
+        
+        def dfs(root):
             if not root:
                 return
             
-            dfs(root.left, arr)
-            arr.append(root.val)
-            dfs(root.right, arr)
-        nums = []
-        dfs(root, nums)
+            dfs(root.left)
+            inorder.append(root.val)
+            dfs(root.right)
         
-        low = float("inf")
+        dfs(root)
+        l,r = 0,1
         
-        for i in range(len(nums)-1):
-            low = min(low, abs(nums[i] - nums[i+1]))
+        while r < len(inorder):
+            small = min(small, inorder[r] - inorder[l])
+            l += 1
+            r += 1
         
-        return low
-        
+        return small
