@@ -6,29 +6,26 @@
 #         self.right = right
 class Solution:
     def increasingBST(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
-        minHeap = []
-        heapq.heapify(minHeap)
-        q = deque([root])
+        inorder = []
         
-        print(q)
-        
-        while q:
-            node = q.popleft()
-            heapq.heappush(minHeap, node.val)
+        def dfs(root):
+            if not root:
+                return 
             
-            if node.right:
-                q.append(node.right)
-            if node.left:
-                q.append(node.left)
+            dfs(root.left)
+            inorder.append(root.val)
+            dfs(root.right)
         
-        print(minHeap)
-        root = TreeNode()
-        curr = root
+        dfs(root)
         
-        while minHeap:
-            curr.val = heapq.heappop(minHeap)
-            if minHeap:
-                curr.right = TreeNode()
+        print
+        for i in range(len(inorder)):
+            if i == 0:
+                root = TreeNode(inorder[i])
+                curr = root
+            else:
+                curr.right = TreeNode(inorder[i]) 
                 curr = curr.right
         
         return root
+        
