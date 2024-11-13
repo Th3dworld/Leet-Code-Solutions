@@ -6,26 +6,26 @@
 #         self.right = right
 class Solution:
     def findSecondMinimumValue(self, root: Optional[TreeNode]) -> int:
-        nums = set()
-        q = deque([root])
+        hashSet = set()
+        def dfs(root):
+            if not root:
+                return
+            
+            hashSet.add(root.val)
+            dfs(root.left)
+            dfs(root.right)
         
-        while q:
-            for i in range(len(q)):
-                node = q.popleft()
-                nums.add(node.val)
-                
-                if node.right:
-                    q.append(node.right)
-                if node.left:
-                    q.append(node.left)
-                    
-        nums = list(nums)
+        dfs(root)
+        minHeap = list(hashSet)
         
-        if len(nums) < 2:
+        heapq.heapify(minHeap)
+        heapq.heappop(minHeap)
+        
+        if minHeap: 
+            return heapq.heappop(minHeap)
+        else:
             return -1
         
-        heap = nums
-        heapq.heapify(heap)
-        heapq.heappop(heap)
         
-        return heapq.heappop(heap)
+        
+        
