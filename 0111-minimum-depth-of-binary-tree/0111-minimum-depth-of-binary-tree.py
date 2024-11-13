@@ -9,19 +9,20 @@ class Solution:
         if not root:
             return 0
         
+        depth = 1
         q = deque([root])
         
-        res = float("inf")
-        depth = 1
         while q:
             for i in range(len(q)):
                 node = q.popleft()
+                
                 if not node.left and not node.right:
-                    res = min(depth, res)
+                    return depth
+                
                 if node.left:
                     q.append(node.left)
                 if node.right:
                     q.append(node.right)
-            depth += 1
-        return res
             
+            depth += 1
+                
