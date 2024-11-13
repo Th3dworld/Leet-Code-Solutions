@@ -16,9 +16,6 @@ class Solution:
             left = dfs(root.left)
             right = dfs(root.right)
             
-            if left and left.val == val:
-                return left
-            else:
-                return right
+            return left or right
         
         return dfs(root)
