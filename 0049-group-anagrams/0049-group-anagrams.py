@@ -1,6 +1,6 @@
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        hashMap = defaultdict(list)
+        res = collections.defaultdict(list)
         
         for string in strs:
             key = [0] * 26
@@ -8,6 +8,6 @@ class Solution:
             for char in string:
                 key[ord(char) - ord('a')] += 1
             
-            hashMap[tuple(key)].append(string)
+            res[tuple(key)].append(string)
         
-        return list(hashMap.values())
+        return list(res.values())
