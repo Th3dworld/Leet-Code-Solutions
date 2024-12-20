@@ -6,5 +6,5 @@ class Solution:
             if num in hashSet:
                 return True
             hashSet.add(num)
-            
+        
         return False
