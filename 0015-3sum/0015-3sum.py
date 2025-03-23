@@ -18,10 +18,10 @@ class Solution:
                 elif nums[i] + nums[l] + nums[r] < 0:
                     l += 1
                 else:
-                    res.append([nums[i],nums[l],nums[r]])
+                    res.append([nums[i], nums[l], nums[r]])
                     r -= 1
                     l += 1
-                    while nums[l] == nums[l-1] and l < r:
+                    while l < r and nums[l] == nums[l - 1]:
                         l += 1
-    
+
         return res
