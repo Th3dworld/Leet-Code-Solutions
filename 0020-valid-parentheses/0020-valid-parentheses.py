@@ -1,15 +1,19 @@
 class Solution:
     def isValid(self, s: str) -> bool:
-        Map = {"}":"{", ")":"(","]":"["}
+        parenthesisMap = {")":"(", "]":"[", "}":"{"}
         stack = []
-        
-        for c in s:
-            if c in Map:
-                if stack and stack[-1] == Map[c]:
+
+        for ch in s:
+            if ch in parenthesisMap:
+                if stack and parenthesisMap[ch] == stack[-1]:
                     stack.pop()
                 else:
                     return False
             else:
-                stack.append(c)
+                stack.append(ch)
         
-        return not stack 
+        if not stack:
+            return True
+        else:
+            return False
+                
