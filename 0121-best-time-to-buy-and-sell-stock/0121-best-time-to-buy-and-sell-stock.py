@@ -1,7 +1,7 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
         maxprofit = float("-inf")
-        l,r = 0,0
+        l = r = 0
 
 
         while r < len(prices):
