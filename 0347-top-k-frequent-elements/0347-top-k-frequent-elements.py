@@ -1,18 +1,16 @@
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        #initialize variables
-        bucket = [[] for i in range(len(nums) + 1)]
         count = Counter(nums)
         res = []
+        bucket = [[] for i in range(len(nums) + 1)]
+
+        for val, count in count.items():
+            bucket[count].append(val)
         
-        #Solve problem
-        for val, occ in count.items():
-            bucket[occ].append(val)
-        
-        for i in range(len(bucket)-1, 0, -1):
-            for num in bucket[i]:
-                res.append(num)
-                
+        for i in range(len(bucket)-1,-1,-1):
+            for val in bucket[i]:
+                res.append(val)
                 if len(res) == k:
                     return res
         
+        return []
