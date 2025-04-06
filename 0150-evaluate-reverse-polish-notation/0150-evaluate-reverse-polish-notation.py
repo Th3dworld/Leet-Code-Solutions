@@ -1,23 +1,23 @@
 class Solution:
     def evalRPN(self, tokens: List[str]) -> int:
+        stack = []#stack to hold values
 
-        stack = []
-
+        #Iterate through the tokens
         for token in tokens:
             match token:
                 case "+":
-                    second, first= int(stack.pop()), int(stack.pop())
+                    second, first = stack.pop(), stack.pop()
                     stack.append(first + second)
-                case "-":
-                    second, first= int(stack.pop()), int(stack.pop())
-                    stack.append(first - second)
                 case "*":
-                    second, first= int(stack.pop()), int(stack.pop())
+                    second, first = stack.pop(), stack.pop()
                     stack.append(first * second)
+                case "-":
+                    second, first = stack.pop(), stack.pop()
+                    stack.append(first - second)
                 case "/":
-                    second, first= int(stack.pop()), int(stack.pop())
-                    stack.append((first / second))
+                    second, first = stack.pop(), stack.pop()
+                    stack.append(int(first / second))
                 case _:
-                    stack.append(token)
-        
-        return int(stack[0])
+                    stack.append(int(token))
+                
+        return stack.pop()
