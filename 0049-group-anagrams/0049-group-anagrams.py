@@ -3,11 +3,11 @@ class Solution:
         hashMap = collections.defaultdict(list)
 
         for s in strs:
-            k = [0] * 26
+            count = [0] * 26
 
             for c in s:
-                k[ord(c) - ord('a')] += 1
-            
-            hashMap[tuple(k)].append(s)
+                count[ord(c) - ord('a')] += 1
+
+            hashMap[tuple(count)].append(s)
         
         return list(hashMap.values())
