@@ -2,21 +2,18 @@ class Solution:
     def isValidSudoku(self, board: List[List[str]]) -> bool:
         ROWS = collections.defaultdict(set)
         COLS = collections.defaultdict(set)
-        GRID = collections.defaultdict(set)
+        GRIDS = collections.defaultdict(set)
 
-        for ROW in range(len(board)):
-            for COL in range(len(board)):
-                if board[ROW][COL] == ".":
+        for row in range(len(board)):
+            for col in range(len(board)):
+                if board[row][col] == ".":
                     continue
-                elif board[ROW][COL] in ROWS[ROW]:
-                    return False
-                elif board[ROW][COL] in COLS[COL]:
-                    return False
-                elif board[ROW][COL] in GRID[(ROW//3,COL//3)]:
+                elif board[row][col] in ROWS[row] or board[row][col] in COLS[col] or board[row][col] in GRIDS[(row//3,col//3)]:
                     return False
                 else:
-                    GRID[(ROW//3,COL//3)].add(board[ROW][COL])
-                    COLS[COL].add(board[ROW][COL])
-                    ROWS[ROW].add(board[ROW][COL])
+                    GRIDS[(row//3,col//3)].add(board[row][col])
+                    COLS[col].add(board[row][col])
+                    ROWS[row].add(board[row][col])
         
         return True
+
