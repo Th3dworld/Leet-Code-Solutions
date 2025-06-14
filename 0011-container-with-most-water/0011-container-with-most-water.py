@@ -1,8 +1,8 @@
 class Solution:
     def maxArea(self, height: List[int]) -> int:
-        maxWater = float("-inf")
-        l,r = 0, len(height)-1
-        
+        maxWater = 0
+        l,r = 0, len(height) - 1
+
         while l < r:
             maxWater = max(maxWater, min(height[l], height[r]) * (r-l))
             if height[r] < height[l]:
@@ -11,3 +11,4 @@ class Solution:
                 l += 1
         
         return maxWater
+        # [1,8,6,2,5,4,8,3,7]
