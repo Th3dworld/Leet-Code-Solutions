@@ -3,25 +3,26 @@ class Solution:
         nums.sort()
         res = []
 
-        for i in range(len(nums)):
-            if nums[i] > 0:
-                break
-            
-            if i > 0 and nums[i] == nums[i-1]:
+        for i,v in enumerate(nums):
+            if i > 0 and v == nums[i - 1]:
                 continue
+            
+            if v > 0:
+                break
             
             l,r = i + 1, len(nums) - 1
 
             while l < r:
-                if nums[i] + nums[l] + nums[r] > 0:
+                total = v + nums[l] + nums[r]
+                if total > 0:
                     r -= 1
-                elif nums[i] + nums[l] + nums[r] < 0:
+                elif total < 0:
                     l += 1
                 else:
-                    res.append([nums[i], nums[l], nums[r]])
-                    r -= 1
+                    res.append([v, nums[l], nums[r]])
                     l += 1
-                    while l < r and nums[l] == nums[l - 1]:
+                    r -= 1
+                    while nums[l] == nums[l-1] and l < r:
                         l += 1
-
-        return res
+        
+        return []
