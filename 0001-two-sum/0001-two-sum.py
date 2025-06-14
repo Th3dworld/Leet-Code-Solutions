@@ -1,10 +1,15 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         valueToIndex = {}
+        
+        for index,value in enumerate(nums):
+            diff = target - value
 
-        for val, ind in enumerate(nums):
-            if target - val in valueToIndex:
-                return [valueToIndex[target - val], ind]
-            valueToIndex[val] = ind
+            if diff in valueToIndex:
+                return [valueToIndex[diff], index]
+
+            valueToIndex[value] = index
         
         return []
+
+        
