@@ -3,20 +3,21 @@ class Solution:
         stack = []
         res = []
 
-        def back(OpenN, closedN):
-            if OpenN == closedN == n:
+        def genCombs(Open,Closed):
+            if Open == Closed == n:
                 res.append("".join(stack))
                 return
             
-            if OpenN < n:
+            if Open < n:
                 stack.append("(")
-                back(OpenN + 1, closedN)
+                genCombs(Open+1, Closed)
                 stack.pop()
             
-            if closedN < OpenN:
+            if Closed < Open:
                 stack.append(")")
-                back(OpenN, closedN + 1)
+                genCombs(Open, Closed + 1)
                 stack.pop()
+    
         
-        back(0,0)
+        genCombs(0,0)
         return res
