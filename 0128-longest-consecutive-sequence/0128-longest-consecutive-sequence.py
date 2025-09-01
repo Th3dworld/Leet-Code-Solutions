@@ -3,11 +3,12 @@ class Solution:
         nums = set(nums)
         longest = 0
 
-        for n in nums:
-            if n - 1 not in nums:
-                count = 1
-                while n + count in nums:
-                    count += 1
-                longest = max(count, longest)
+        for num in nums:
+            if num - 1 not in nums:
+                length = 1
+                while num + length in nums:
+                    length += 1
+                longest = max(length, longest)
         
         return longest
+                
