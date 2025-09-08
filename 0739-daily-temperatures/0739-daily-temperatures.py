@@ -8,7 +8,6 @@ class Solution:
         for i,v in enumerate(temperatures):
             while stack and stack[-1][1] < v:
                 index, value = stack.pop()
-                print(index)
                 answer[index] = i - index
             stack.append([i,v])
         
