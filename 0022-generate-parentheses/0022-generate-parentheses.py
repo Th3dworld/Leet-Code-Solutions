@@ -1,23 +1,17 @@
 class Solution:
     def generateParenthesis(self, n: int) -> List[str]:
-        stack = []
         res = []
-
-        def genCombs(Open,Closed):
-            if Open == Closed == n:
+        def generate(opened,closed, stack):
+            if opened == closed == n:
                 res.append("".join(stack))
-                return
-            
-            if Open < n:
+            if opened < n:
                 stack.append("(")
-                genCombs(Open+1, Closed)
+                generate(opened + 1,closed, stack)
                 stack.pop()
-            
-            if Closed < Open:
+            if closed < opened:
                 stack.append(")")
-                genCombs(Open, Closed + 1)
+                generate(opened,closed  + 1, stack)
                 stack.pop()
-    
         
-        genCombs(0,0)
+        generate(0,0,[])
         return res
