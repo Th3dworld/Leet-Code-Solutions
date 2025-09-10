@@ -1,9 +1,7 @@
 class Solution:
     def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
-        #[day,temp]
-        #answer
-        stack = []
         answer = [0] * len(temperatures)
+        stack = []
 
         for i,v in enumerate(temperatures):
             while stack and stack[-1][1] < v:
@@ -12,4 +10,3 @@ class Solution:
             stack.append([i,v])
         
         return answer
-                
