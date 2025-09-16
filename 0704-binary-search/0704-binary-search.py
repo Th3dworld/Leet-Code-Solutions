@@ -3,7 +3,7 @@ class Solution:
         l,r = 0, len(nums)-1
 
         while l <= r:
-            index = ((r + l) // 2)
+            index = (r + l) // 2
             if nums[index] > target:
                 r = index - 1
             elif nums[index] < target:
