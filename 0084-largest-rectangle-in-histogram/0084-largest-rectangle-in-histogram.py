@@ -10,7 +10,7 @@ class Solution:
                 maxArea = max(maxArea, height * (i - index))
                 start = index
             stack.append((start,h))
-
+        
         for s,h in stack:
             maxArea = max(maxArea, h * (len(heights) - s))
         
