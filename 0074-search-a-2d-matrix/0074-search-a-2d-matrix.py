@@ -8,13 +8,12 @@ class Solution:
             if target <= matrix[i][r] and target >= matrix[i][l]:  
                 while l <= r:
                     mid = l + (r - l)//2
-                    print(mid)
                     if target == matrix[i][mid]:
                         return True
                     elif target > matrix[i][mid]:
-                        l += 1
+                        l = mid + 1
                     elif target < matrix[i][mid]:
-                        r -= 1
+                        r = mid - 1
 
         return False
                     
