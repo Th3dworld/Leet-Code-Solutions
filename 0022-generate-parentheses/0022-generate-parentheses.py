@@ -1,17 +1,19 @@
 class Solution:
     def generateParenthesis(self, n: int) -> List[str]:
         res = []
-        def makeParen(opening, closing, stack):
-            if opening == closing == n:
+        stack = []
+
+        def genParenth(Open, Closed, stack):
+            if Open == Closed == n:
                 res.append("".join(stack))
-            if opening < n:
+            if Open < n:
                 stack.append("(")
-                makeParen(opening + 1, closing, stack)
+                genParenth(Open + 1, Closed, stack)
                 stack.pop()
-            if closing < opening:
+            if Closed < Open:
                 stack.append(")")
-                makeParen(opening, closing + 1, stack)
+                genParenth(Open, Closed + 1, stack)
                 stack.pop()
 
-        makeParen(0, 0, [])
+        genParenth(0,0,[])
         return res
