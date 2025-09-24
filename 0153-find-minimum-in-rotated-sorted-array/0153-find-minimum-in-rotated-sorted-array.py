@@ -1,10 +1,10 @@
 class Solution:
     def findMin(self, nums: List[int]) -> int:
-        l,r = 0, len(nums)-1
+        l,r = 0,len(nums) - 1
         res = nums[0]
 
         while l <= r:
-            if nums[l] < nums[r]:
+            if nums[l] <= nums[r]:
                 res = min(res, nums[l])
                 break
             
@@ -12,7 +12,8 @@ class Solution:
             res = min(res, nums[m])
             if nums[l] <= nums[m]:
                 l = m + 1
+                res = min(res, nums[l])
             else:
                 r = m - 1
-        
+
         return res
