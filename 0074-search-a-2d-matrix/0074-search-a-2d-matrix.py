@@ -4,16 +4,15 @@ class Solution:
             return False
         
         for i in range(len(matrix)):
-            l,r = 0, len(matrix[0])-1
-            if target >= matrix[i][0] and target <= matrix[i][r]:
+            l,r = 0, len(matrix[i]) - 1
+            if matrix[i][l] <= target and matrix[i][r] >= target:
                 while l <= r:
-                    mid = l + (r - l)//2
-                    if target == matrix[i][mid]:
+                    m = l + (r - l)//2
+                    if matrix[i][m] == target:
                         return True
-                    elif matrix[i][mid] > target:
-                        r = mid - 1
-                    elif matrix[i][mid] < target:
-                        l = mid + 1
+                    elif matrix[i][m] < target:
+                        l = m + 1
+                    else:
+                        r = m - 1
         
         return False
-                        
