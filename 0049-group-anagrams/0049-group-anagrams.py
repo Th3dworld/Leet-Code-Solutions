@@ -1,11 +1,11 @@
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        anagrams = collections.defaultdict(list)
+        arrs = collections.defaultdict(list)
 
         for s in strs:
-            count = [0] * 26
+            countr = [0] * 26
             for c in s:
-                count[ord(c) - ord('a')] += 1
-            anagrams[tuple(count)].append(s)
+                countr[ord(c) - ord('a')] += 1
+            arrs[tuple(countr)].append(s)
         
-        return list(anagrams.values())
+        return list(arrs.values())
